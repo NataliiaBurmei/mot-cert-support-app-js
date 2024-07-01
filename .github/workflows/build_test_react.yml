@@ -41,4 +41,4 @@ jobs:
         with:
           name: JEST Tests
           path: reports/jest-*.xml
-          repoter: jest-junit
+          reporter: jest-junit

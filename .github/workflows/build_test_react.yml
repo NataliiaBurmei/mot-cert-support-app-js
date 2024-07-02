@@ -40,5 +40,5 @@ jobs:
         if: success() || failure()
         with:
           name: JEST Tests
-          path: '*.xml'
+          path: test-results/**/*.xml
           reporter: jest-junit

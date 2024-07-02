@@ -35,10 +35,16 @@ jobs:
           files: |
            junit.xml
            reports/e2e-report/*.xml
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: npm test
       - name: Test Report
         uses: dorny/test-reporter@v1
         if: success() || failure()
         with:
-          name: JEST Tests
-          path: test-results/**/*.xml
-          reporter: jest-junit
+            name: JEST Tests
+            path: reports/jest-*.xml
+            reporter: jest-junit

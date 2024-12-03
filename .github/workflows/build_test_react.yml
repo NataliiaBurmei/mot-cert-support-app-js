@@ -36,10 +36,9 @@ jobs:
            junit.xml
            reports/e2e-report/*.xml
       - name: Slack Notification Demo
-        uses: actions/checkout@master
-      - name: Slack Notification Demo
-        uses: bryannice/gitactions-slack-notification@2.0.0
+        uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_INCOMING_WEBHOOK: ${{ secrets.SLACK_INCOMING_WEBHOOK }}
-          SLACK_MESSAGE: 'Actions and Testing Message'
-          SLACK_TITLE: 'Actions and Testing'           
+          SLACK_MESSAGE: 'Testing :rocket:'
+          SLACK_TITLE: 'Actions Testing' 
+          SLACK_COLOR: '#ff00ff'          

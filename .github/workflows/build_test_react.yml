@@ -36,13 +36,8 @@ jobs:
            junit.xml
            reports/e2e-report/*.xml
       - name: Slack Notification Demo
-        uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took,pullRequest
-        env:
-          SLACK_INCOMING_WEBHOOK: ${{ secrets.SLACK_INCOMING_WEBHOOK }}
-          if: always()
-          SLACK_MESSAGE: 'Testing :rocket:'
-          SLACK_TITLE: 'Actions Testing' 
-          SLACK_COLOR: '#ff00ff'          
+        id: slack
+        uses: slackapi/slack-github-action@v1.26.0   
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK          

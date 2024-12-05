@@ -35,9 +35,9 @@ jobs:
           files: |
            junit.xml
            reports/e2e-report/*.xml
-      - name: Slack Notification Demo
-        id: slack
-        uses: slackapi/slack-github-action@v1.26.0   
-    env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK          
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_USERNAME: notifications_bot
+          SLACK_MESSAGE: 'Testing ${{ steps.extract_branch.outputs.branch }}'          
